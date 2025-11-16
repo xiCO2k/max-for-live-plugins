@@ -69,12 +69,6 @@ This is the **RECOMMENDED** approach as it preserves the correct binary format.
        f.write(new_json)
    ```
 
-3. **Create symlink to Ableton's MIDI Effects folder**
-   ```bash
-   ln -s "/path/to/your/device.amxd" \
-         "/Users/USERNAME/Desktop/ABLETON LIVE SOUNDS/Library/User Library/Presets/MIDI Effects/Max MIDI Effect/YourDevice.amxd"
-   ```
-
 ## Common Max Objects for MIDI Processing
 
 ### Input Objects
@@ -155,16 +149,14 @@ midiin → midiselect @touch → touchin → ctlout 11
 1. **DO NOT** create `.amxd` as a directory/bundle - it must be a binary file
 2. **Always use `latin-1` encoding** when reading/writing the JSON portion
 3. **Update the length header** after modifying JSON content
-4. **Use symlinks** for development - changes to the source file reflect immediately in Ableton
-5. **File size should be reasonable** (typically 4-10KB for simple MIDI processors)
-6. If Ableton says "file exceeded maximum size", the binary format is corrupted
+4. **File size should be reasonable** (typically 4-10KB for simple MIDI processors)
+5. If Ableton says "file exceeded maximum size", the binary format is corrupted
 
 ## Troubleshooting
 
 ### Device won't drag in Ableton
 - Check file type with `file device.amxd` - should show "data"
 - Verify file size is reasonable (< 100KB for simple devices)
-- Check symlink points to correct file: `ls -la`
 
 ### "File exceeded maximum size" error
 - Binary format is corrupted
@@ -183,13 +175,6 @@ max8-aftertouch-to-cc11/
 ├── Aftertouch_to_CC11.amxd          # Main device
 ├── CC11_to_Aftertouch.amxd          # Reverse converter
 └── MAX_FOR_LIVE_CREATION_GUIDE.md   # This guide
-```
-
-With symlinks in:
-```
-~/Desktop/ABLETON LIVE SOUNDS/Library/User Library/Presets/MIDI Effects/Max MIDI Effect/
-├── Aftertouch_to_CC11.amxd -> /path/to/project/Aftertouch_to_CC11.amxd
-└── CC11_to_Aftertouch.amxd -> /path/to/project/CC11_to_Aftertouch.amxd
 ```
 
 ## Version Info
